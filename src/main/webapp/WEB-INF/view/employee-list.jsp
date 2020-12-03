@@ -13,7 +13,7 @@
 </head>
 <body>
 	<div class="container">
-		<form method="post" action="">
+		<form method="post" action="/employee/create">
 			<div class="form-row">
 				<div class="form-group col-md-4">
 					<label for="name">Ad</label> <input type="text"
