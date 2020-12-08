@@ -1,9 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
+<meta charset="UTF-8">
 <title>Employees</title>
 
 <link rel="stylesheet"
@@ -28,22 +29,46 @@
 					<label for="gender">Cinsiyet</label> <select id="gender"
 						name="gender" class="form-control">
 						<option selected disabled>Seciniz...</option>
-						<option value="man">Erkek</option>
-						<option value="woman">Kadin</option>
+						<option value="Erkek">Erkek</option>
+						<option value="Kadın">Kadın</option>
 					</select>
 				</div>
 			</div>
 			<div class="form-row">
 				<div class="form-group col-md-4">
-					<label for="salary">Maas</label> <input type="number"
+					<label for="salary">Maaş</label> <input type="number"
 						class="form-control" id="salary" name="salary" placeholder="Maas">
 				</div>
 				<div class="form-group col-md-8">
-					<label for="address">Adres</label> 
+					<label for="address">Adres</label>
 					<textarea rows="3" class="form-control" id="address" name="address"></textarea>
 				</div>
 			</div>
-			<input type="submit" class="btn btn-primary" value="Kaydet"/>
+			<input type="submit" class="btn btn-success" value="Kaydet" />
+			<div class="row">
+				<table class="table">
+					<thead>
+						<tr>
+							<th>ID</th>
+							<th>Ad</th>
+							<th>Soyad</th>
+							<th>Cinsiyet</th>
+							<th>Maaş</th>
+						</tr>
+					</thead>
+					<tbody>
+						<c:forEach items="${employees}" var="employee">
+							<tr>
+								<td>${employee.id}</td>
+								<td>${employee.name}</td>
+								<td>${employee.surname}</td>
+								<td>${employee.gender}</td>
+								<td>${employee.salary}</td>
+							</tr>
+						</c:forEach>
+					</tbody>
+				</table>
+			</div>
 		</form>
 	</div>
 

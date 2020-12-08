@@ -1,5 +1,8 @@
 package com.springmvc.service;
 
+import java.util.List;
+
+import org.apache.commons.collections4.IterableUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,5 +18,10 @@ public class EmployeeServiceImpl implements EmployeeService{
 	@Override
 	public void saveEmployee(Employee employee) {
 		employeeRepository.save(employee);
+	}
+
+	@Override
+	public List<Employee> getAllEmployees() {
+		return IterableUtils.toList(employeeRepository.findAll());
 	}
 }

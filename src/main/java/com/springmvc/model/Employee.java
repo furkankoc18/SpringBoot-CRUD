@@ -9,9 +9,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-
+import org.hibernate.annotations.Type;
+import org.springframework.format.annotation.DateTimeFormat;
 import com.sun.istack.NotNull;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -29,8 +29,10 @@ public class Employee implements Serializable {
 	@NotNull
 	private Long id;
 	@NotNull
+	@Type(type = "uuid-char")
 	private UUID uuid;
 	@Temporal(TemporalType.TIMESTAMP)
+	@DateTimeFormat(pattern = "yyyy-MM-dd hh:mm:ss")
 	@NotNull
 	private Date createdTime;
 	@NotNull
