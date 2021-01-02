@@ -1,6 +1,7 @@
 package com.springmvc.service;
 
 import java.util.List;
+import java.util.UUID;
 
 import org.apache.commons.collections4.IterableUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +11,7 @@ import com.springmvc.model.Employee;
 import com.springmvc.repo.EmployeeRepository;
 
 @Service
-public class EmployeeServiceImpl implements EmployeeService{
+public class EmployeeServiceImpl implements EmployeeService {
 
 	@Autowired
 	private EmployeeRepository employeeRepository;
@@ -23,5 +24,15 @@ public class EmployeeServiceImpl implements EmployeeService{
 	@Override
 	public List<Employee> getAllEmployees() {
 		return IterableUtils.toList(employeeRepository.findAll());
+	}
+
+	@Override
+	public void removeEmployee(Employee employee) {
+		employeeRepository.delete(employee);
+	}
+
+	@Override
+	public Employee getEmployeeByUuid(String uuid) {
+		return employeeRepository.findEmployeeByUuid(UUID.fromString(uuid));
 	}
 }
